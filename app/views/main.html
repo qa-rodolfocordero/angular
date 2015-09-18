@@ -1,0 +1,264 @@
+
+ <form novalidate ng-controller="MainCtrl" name="Form">
+   <div class="alert alert-danger" role="alert" ng-if="error">
+     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+     <span class="sr-only">Error:</span>
+     {{error}}
+   </div>
+   <div class="alert alert-success" role="alert" ng-if="success">
+     <span class="glyphicon glyphicon glyphicon-ok" aria-hidden="true"></span>
+     <span class="sr-only">Success:</span>
+     The request was send
+   </div>
+  <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="clientname">Client Name</label><span class="red">*</span>
+          <input type="text" class="form-control" id="clientname" name="clientname" required="required" placeholder="Client Name" ng-maxlength="30" ng-model="model.client_name" required=""/>
+
+          <div class="alert alert-danger" role="alert" ng-if="!Form.clientname.$pristine && Form.clientname.$error.required">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            The field is required
+          </div>
+          <div class="alert alert-danger" role="alert" ng-if="!Form.clientname.$pristine && Form.clientname.$error.maxlength">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            Only it allowed less than 30 characters
+          </div>
+
+        </div>
+        <div class="form-group">
+          <label for="clientaddress">Client Address</label><span class="red">*</span>
+          <input type="text" class="form-control" id="clientaddress" name="clientaddress" required="required" placeholder="Client Address" ng-maxlength="50" ng-model="model.client_address"/>
+
+          <div class="alert alert-danger" role="alert" ng-if="!Form.clientaddress.$pristine && Form.clientaddress.$error.required">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            The field is required
+          </div>
+          <div class="alert alert-danger" role="alert" ng-if="!Form.clientaddress.$pristine && Form.clientaddress.$error.maxlength">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            Only it allowed less than 50 characters
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="clientcity">Client City</label><span class="red">*</span>
+          <input type="text" class="form-control" id="clientcity" name="clientcity" required="required" placeholder="Client City" ng-maxlength="30" ng-model="model.client_city"/>
+          <div class="alert alert-danger" role="alert" ng-if="!Form.clientcity.$pristine && Form.clientcity.$error.required">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            The field is required
+          </div>
+          <div class="alert alert-danger" role="alert" ng-if="!Form.clientcity.$pristine && Form.clientcity.$error.maxlength">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            Only it allowed less than 30 characters
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="clientcountry">Client Country</label><span class="red">*</span>
+          <input type="text" class="form-control" id="clientcountry" name="clientcountry" required="required" placeholder="Client Country" ng-maxlength="20" ng-model="model.client_country"/>
+          <div class="alert alert-danger" role="alert" ng-if="!Form.clientcountry.$pristine && Form.clientcountry.$error.required">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            The field is required
+          </div>
+          <div class="alert alert-danger" role="alert" ng-if="!Form.clientcountry.$pristine && Form.clientcountry.$error.maxlength">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            Only it allowed less than 20 characters
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="requestorsemail">Requestors Email</label>
+    <input type="email" class="form-control" id="requestorsemail" name="requestorsemail"  data-toggle="tooltip" data-placement="bottom"  title="Please provide your email address to receive a copy of the request you are generating" placeholder="Requestors Email" ng-maxlength="50" ng-model="Form.requestors_email"/>
+    <div class="alert alert-danger" role="alert" ng-if="!Form.requestorsemail.$pristine && Form.requestorsemail.$error.maxlength">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        Only it allowed less than 50 characters
+    </div>
+    <div class="alert alert-danger" role="alert" ng-if="!Form.requestorsemail.$pristine && Form.requestorsemail.$error.email">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        Invalid format, should be an email
+    </div>
+
+  </div>
+  <div class="form-group">
+    <label for="engagamentdescription">Engagament Description</label>
+    <textarea type="text" class="form-control" id="engagament-description" name="engagament-description" ng-maxlength="1000" ng-model="model.engagement_description"> </textarea>
+  </div>
+  <div id="resources" ng-if="model.resources.length">
+    <div class="elements-resources">
+      <h2>Resource {{model.resources.length}}:</h2>
+
+      <div class="col-md-6">
+          <div class="form-group">
+            <label for="core-plataform">Core Plataform</label>
+            <select id="coreplataform" name="coreplataform" class="form-control" ng-model="model.resources[model.resources.length-1].core_plataform">
+              <option value="Hybris">Hybris</option>
+              <option value="Hybris Marketing">Hybris Marketing</option>
+              <option value="Hybris Commerce">Hybris Commerce</option>
+              <option value="SiteCorp">SiteCorp</option>
+              <option value="AEM CQ5">AEM CQ5</option>
+              <option value="AEM 6.0">AEM 0.6</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="resourcetype">Resource Type</label>
+            <select class="form-control" id="resourcetype" name="resourcetype" ng-model="model.resources[model.resources.length-1].resource_type">
+              <option value="Account Manager">Account Manager</option>
+              <option value="Business Analyst">Business Analyst</option>
+              <option value="Project Manager">Project Manager</option>
+              <option value="Technical Delivery Manager">Technical Delivery Manager</option>
+              <option value="Solution Architect">Solution Architect</option>
+              <option value="Software Developer">Software Developer</option>
+              <option value="Quality Assurance">Quality Assurance</option>
+              <option value="DevOps">DevOps</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="numberofresources"># of Resources</label><span class="red">*</span>
+            <input type="number" min=0 max=9 class="form-control" id="numberofresources" name="numberofresources" required data-toggle="tooltip" data-placement="bottom"  title="Please document the number of resources for this type needed" ng-model="model.resources[model.resources.length-1].number_of_resources" />
+            <div class="alert alert-danger" role="alert" ng-if="!Form.numberofresources.$pristine && Form.numberofresources.$error.required">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              <span class="sr-only">Error:</span>
+              The field is required
+            </div>
+            <div class="alert alert-danger" role="alert" ng-if="!Form.numberofresources.$pristine && Form.numberofresources.$error.min">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              <span class="sr-only">Error:</span>
+              The value should be greater than 0
+            </div>
+
+            <div class="alert alert-danger" role="alert" ng-if="!Form.numberofresources.$pristine && Form.numberofresources.$error.max">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              <span class="sr-only">Error:</span>
+              The value should be less than 9
+            </div>
+
+            <div class="alert alert-danger" role="alert" ng-if="!Form.numberofresources.$pristine && Form.numberofresources.$error.number">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              <span class="sr-only">Error:</span>
+              The value should be a number between 0 and 9
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="specialskillsrequired">Special Skills Required</label><span class="red">*</span>
+            <textarea  class="form-control" id="specialskillsrequired" name="specialskillsrequired" required="required" data-toggle="tooltip" data-placement="bottom"  title="Please document any specific skill or knowledge that the resource is required to have in order to participate in this engagement OR if the resource Type is Other, please specify the role OR if the Core Platform is Other, specify what it is." ng-maxlength="200" ng-model="model.resources[model.resources.length-1].special_skills_required"> </textarea>
+            <div class="alert alert-danger" role="alert" ng-if="!Form.specialskillsrequired.$pristine && Form.specialskillsrequired.$error.required">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              <span class="sr-only">Error:</span>
+              The field is required
+            </div>
+            <div class="alert alert-danger" role="alert" ng-if="!Form.specialskillsrequired.$pristine && Form.specialskillsrequired.$error.maxlength">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span>
+                Only it allowed less than 200 characters
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group" data-toggle="tooltip" data-placement="top"  title="Specify if the position is required to be onsite or remote. Flexible implies a preference for onsite but a willingness to accept a remote candidate">
+            <label for="resourcelocation">Resource Location</label>
+            <div class="radio">
+              <label>
+                <input type="radio"  id="resourcelocation" name="resourcelocation" value="Onsite" ng-model="model.resources[model.resources.length-1].resource_location" />
+                Onsite
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" id="resourcelocation" name="resourcelocation" value="Remote" ng-model="model.resources[model.resources.length-1].resource_location"/>
+                Remote
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" id="resourcelocation" name="resourcelocation" value="Flexible" ng-model="model.resources[model.resources.length-1].resource_location"/>
+                Flexible
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group travel-aceptable"  data-toggle="tooltip" data-placement="top"  title="If the resource must be onsite, specify if travel costs are acceptable" ng-show="model.resources[model.resources.length-1].resource_location == 'Onsite'">
+            <label for="travelaceptable">Travel Acceptable</label>
+            <div class="radio">
+              <label>
+                <input type="radio" id="travelaceptable" name="travelaceptable" value="Yes" ng-model="model.resources[model.resources.length-1].travel_acceptable"/>
+                Yes
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" id="travelaceptable" name="travelaceptable" value="No" ng-model="model.resources[model.resources.length-1].travel_acceptable"/>
+                No
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="targetstartdate">Target Start Date</label><span class="red">*</span>
+            <input type="text" class="form-control" datepicker-popup="{{'yyyy-MM-dd'}}" is-open="status.opened" ng-click="status.opened=true" id="targetstartdate" name="targetstartdate" title="When is the engagement/resource expected to start work" data-toggle="tooltip" data-placement="bottom" ng-model="model.resources[model.resources.length-1].target_start_date" min-date="minDate" min="minDate" required/>
+            <div class="alert alert-danger" role="alert" ng-if="!Form.targetstartdate.$pristine && Form.targetstartdate.$error.required">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              <span class="sr-only">Error:</span>
+              The field is required
+            </div>
+
+            <div class="alert alert-danger" role="alert" ng-if="!Form.targetstartdate.$pristine && Form.targetstartdate.$error.date">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              <span class="sr-only">Error:</span>
+              The value should be a date
+            </div>
+
+            <div class="alert alert-danger" role="alert" ng-if="!Form.targetstartdate.$pristine && Form.targetstartdate.$error.min">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              <span class="sr-only">Error:</span>
+              The value should be a date in the future
+            </div>
+
+          </div>
+          <div class="form-group">
+            <label for="estimatedduration">Estimated Duration</label>
+            <select type="text" class="form-control" id="estimated-duration" name="estimated-duration" required="required" ng-model="model.resources[model.resources.length-1].estimate_duration" data-toggle="tooltip" data-placement="bottom"  title="How long is will the resource expect to be engaged on the project">
+              <option value="1 Month">1 Month</option>
+              <option value="2 Months">2 Months</option>
+              <option value="3 Months">3 Months</option>
+              <option value="4 Months">4 Months</option>
+              <option value="5 Months">5 Months</option>
+              <option value="6 Months">6 Months</option>
+              <option value="7 Months">7 Months</option>
+              <option value="8 Months">8 Months</option>
+              <option value="9 Months">9 Months</option>
+              <option value="10 Months">10 Months</option>
+              <option value="11 Months">11 Months</option>
+              <option value="12 Months">12 Months</option>
+              <option value="More than a year">More than a year</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="languagerequirement">Language Requirement</label>
+            <select type="text" class="form-control" id="language-requirement" name="language-requirement" title="Besides English, what additional language will the resource be expected to be fluent in?" data-toggle="tooltip" data-placement="bottom" ng-model="model.resources[model.resources.length-1].language_requirement" >
+              <option value="Spanish">Spanish</option>
+              <option value="Portuguese">Portuguese</option>
+              <option value="None">None</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="clear"></div>
+  <div class="form-group">
+          <button type="button" class="btn btn-primary" ng-click="addResource()"> <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add More Resources</button>
+          <button type="submit" class="btn btn-primary" ng-show="model.resources.length" ng-click="submitForm(model)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Submit Request</button>
+  </div>
+</form>
