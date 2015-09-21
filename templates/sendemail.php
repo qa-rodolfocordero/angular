@@ -1,4 +1,4 @@
-<?php  
+<?php
 header('Content-Type: application/json');
 
 function getContentFile($filename)
@@ -28,7 +28,7 @@ foreach($data->resources as $element)
 			strip_tags($element->target_start_date),
 			strip_tags($element->estimate_duration),
 			strip_tags($element->language_requirement)
-			
+
 		);
 		if ($element->resource_location=="OnSite")
 		{
@@ -69,11 +69,10 @@ else
 
 
 $email_body=str_replace($variables,$values,$email_template);
-$to = 'asdad@yopmail.com';
+$to = 'JLeichtenschlag@globalnowinc.com';
 
-$subject = 'New Request from '.$data->client_name;
+$subject = 'EPAM Request: '.$data->client_name;
 
-$headers = "From:  \r\n";
 if (property_exists($data,"requestors_email"))
 {
 	$headers .= "Reply-To: ". strip_tags($data->requestors_email) . "\r\n";

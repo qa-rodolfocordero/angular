@@ -34,15 +34,9 @@
       }
       emailService.sendEmail(JSON.stringify(model)).then(
         function(result){
-            $scope.success="a"+result;
-            $scope.resourcevalid=true;
-            $scope.minDate=new Date();
-            $scope.model={};
-            $scope.model.resources=[];
-            $scope.setPristineToAllChildren(true);
+            $location.path('/finish');
         },
         function(error){
-            console.log(error);
             $scope.error=error;
         }
       )

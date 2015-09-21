@@ -74,10 +74,16 @@
           </div>
         </div>
     </div>
+
   </div>
   <div class="form-group">
-    <label for="requestorsemail">Requestors Email</label>
-    <input type="email" class="form-control" id="requestorsemail" name="requestorsemail"  data-toggle="tooltip" data-placement="bottom"  title="Please provide your email address to receive a copy of the request you are generating" placeholder="Requestors Email" ng-maxlength="50" ng-model="Form.requestors_email"/>
+    <label for="requestorsemail">Requestors Email</label><span class="red">*</span>
+    <input type="email" class="form-control" id="requestorsemail" name="requestorsemail"  data-toggle="tooltip" data-placement="bottom"  title="Please provide your email address to receive a copy of the request you are generating" placeholder="Requestors Email" ng-maxlength="50" ng-model="Model.requestors_email" required/>
+    <div class="alert alert-danger" role="alert" ng-if="!Form.requestorsemail.$pristine && Form.requestorsemail.$error.required">
+      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+      <span class="sr-only">Error:</span>
+      The field is required
+    </div>
     <div class="alert alert-danger" role="alert" ng-if="!Form.requestorsemail.$pristine && Form.requestorsemail.$error.maxlength">
         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
         <span class="sr-only">Error:</span>
@@ -152,13 +158,9 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="specialskillsrequired">Special Skills Required</label><span class="red">*</span>
-            <textarea  class="form-control" id="specialskillsrequired" name="specialskillsrequired" required="required" data-toggle="tooltip" data-placement="bottom"  title="Please document any specific skill or knowledge that the resource is required to have in order to participate in this engagement OR if the resource Type is Other, please specify the role OR if the Core Platform is Other, specify what it is." ng-maxlength="200" ng-model="model.resources[model.resources.length-1].special_skills_required"> </textarea>
-            <div class="alert alert-danger" role="alert" ng-if="!Form.specialskillsrequired.$pristine && Form.specialskillsrequired.$error.required">
-              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-              <span class="sr-only">Error:</span>
-              The field is required
-            </div>
+            <label for="specialskillsrequired">Special Skills Required</label>
+            <textarea  class="form-control" id="specialskillsrequired" name="specialskillsrequired"  data-toggle="tooltip" data-placement="bottom"  title="Please document any specific skill or knowledge that the resource is required to have in order to participate in this engagement OR if the resource Type is Other, please specify the role OR if the Core Platform is Other, specify what it is." ng-maxlength="200" ng-model="model.resources[model.resources.length-1].special_skills_required" > </textarea>
+
             <div class="alert alert-danger" role="alert" ng-if="!Form.specialskillsrequired.$pristine && Form.specialskillsrequired.$error.maxlength">
                 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                 <span class="sr-only">Error:</span>
@@ -256,9 +258,37 @@
         </div>
       </div>
   </div>
-  <div class="clear"></div>
-  <div class="form-group">
+  <div class="row">
+
+  <table class="table" ng-if="model.resources.length>1">
+    <tr>
+      <th>#</th>
+      <th>Core Plataform</th>
+      <th>Resource Type</th>
+      <th># of Resources </th>
+      <th>Resource Location</th>
+      <th>Travel Acceptable</th>
+      <th>Target Start Date</th>
+      <th>Estimated Duration</th>
+      <th>Language Requirement</th>
+    </tr>
+  <tr ng-repeat="resource in model.resources" ng-animate="'animate'">
+      <td>{{resource.id}}</td>
+      <td>{{resource.core_plataform}}</td>
+      <td>{{resource.resource_type}}</td>
+      <td>{{resource.number_of_resources}}</td>
+      <td>{{resource.resource_location}}</td>
+      <td>{{resource.travel_acceptable}}</td>
+      <td>{{resource.target_start_date}}</td>
+      <td>{{resource.estimate_duration}}</td>
+      <td>{{resource.language_requirement}}</td>
+  </tr>
+</table>
+</div>
+<div class="row">
+  <div class="form-group text-right">
           <button type="button" class="btn btn-primary" ng-click="addResource()"> <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add More Resources</button>
           <button type="submit" class="btn btn-primary" ng-show="model.resources.length" ng-click="submitForm(model)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Submit Request</button>
   </div>
+</div>
 </form>

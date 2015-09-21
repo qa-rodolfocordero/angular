@@ -26,6 +26,11 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
+      .when('/finish', {
+        templateUrl: 'views/finish.html',
+        controller: 'FinishCtrl',
+        controllerAs: 'finish'
+      })
       .otherwise({
         redirectTo: '/'
       });
