@@ -77,8 +77,8 @@
 
   </div>
   <div class="form-group">
-    <label for="requestorsemail">Requestors Email</label><span class="red">*</span>
-    <input type="email" class="form-control" id="requestorsemail" name="requestorsemail"  data-toggle="tooltip" data-placement="bottom"  title="Please provide your email address to receive a copy of the request you are generating" placeholder="Requestors Email" ng-maxlength="50" ng-model="Model.requestors_email" required/>
+    <label for="requestorsemail">Requester's Email</label><span class="red">*</span>
+    <input type="email" class="form-control" id="requestorsemail" name="requestorsemail"  data-toggle="tooltip" data-placement="bottom"  title="Please provide your email address to receive a copy of the request you are generating" placeholder="Requestors Email" ng-maxlength="50" ng-model="model.requestors_email" required/>
     <div class="alert alert-danger" role="alert" ng-if="!Form.requestorsemail.$pristine && Form.requestorsemail.$error.required">
       <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
       <span class="sr-only">Error:</span>
@@ -278,7 +278,7 @@
       <td>{{resource.resource_type}}</td>
       <td>{{resource.number_of_resources}}</td>
       <td>{{resource.resource_location}}</td>
-      <td>{{resource.travel_acceptable}}</td>
+      <td>{{resource.resource_location=="Onsite" ? resource.travel_acceptable:"none"}}</td>
       <td>{{resource.target_start_date}}</td>
       <td>{{resource.estimate_duration}}</td>
       <td>{{resource.language_requirement}}</td>

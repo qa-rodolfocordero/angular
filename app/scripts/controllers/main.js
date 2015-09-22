@@ -9,7 +9,7 @@
  */
  var app=angular.module('rrfpageApp')
 
-  app.controller('MainCtrl',function ($scope,emailService) {
+  app.controller('MainCtrl',function ($scope,$location,emailService) {
     $scope.resourcevalid=true;
     $scope.minDate=new Date();
     $('[data-toggle="tooltip"]').tooltip();

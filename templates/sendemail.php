@@ -69,16 +69,14 @@ else
 
 
 $email_body=str_replace($variables,$values,$email_template);
-$to = 'JLeichtenschlag@globalnowinc.com';
+$to = strip_tags($data->requestors_email);
 
 $subject = 'EPAM Request: '.$data->client_name;
+$headers .= "Bcc: bfoster@globalnowinc.com,lcarter@globalnowinc.com,JLeichtenschlag@globalnowinc.com\r\n";
 
-if (property_exists($data,"requestors_email"))
-{
-	$headers .= "Reply-To: ". strip_tags($data->requestors_email) . "\r\n";
-}
 $headers .= "MIME-Version: 1.0\r\n";
 $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
 if (mail($to, $subject, $email_body, $headers))
 {
 	$arr = array('result' => 1);
@@ -90,3 +88,5 @@ else
 	echo json_encode($arr);
 }
 ?>
+
+
