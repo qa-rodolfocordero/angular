@@ -97,7 +97,7 @@
 
   </div>
   <div class="form-group">
-    <label for="engagamentdescription">Engagament Description</label>
+    <label for="engagamentdescription">Engagement Description</label>
     <textarea type="text" class="form-control" id="engagament-description" name="engagament-description" ng-maxlength="1000" ng-model="model.engagement_description"> </textarea>
   </div>
   <div id="resources" ng-if="model.resources.length">
@@ -106,14 +106,14 @@
 
       <div class="col-md-6">
           <div class="form-group">
-            <label for="core-plataform">Core Plataform</label>
+            <label for="core-plataform">Core Platform</label>
             <select id="coreplataform" name="coreplataform" class="form-control" ng-model="model.resources[model.resources.length-1].core_plataform">
               <option value="Hybris">Hybris</option>
               <option value="Hybris Marketing">Hybris Marketing</option>
               <option value="Hybris Commerce">Hybris Commerce</option>
               <option value="SiteCorp">SiteCorp</option>
               <option value="AEM CQ5">AEM CQ5</option>
-              <option value="AEM 6.0">AEM 0.6</option>
+              <option value="AEM 6.0">AEM 6.0</option>
               <option value="Other">Other</option>
             </select>
           </div>
@@ -279,7 +279,7 @@
       <td>{{resource.number_of_resources}}</td>
       <td>{{resource.resource_location}}</td>
       <td>{{resource.resource_location=="Onsite" ? resource.travel_acceptable:"none"}}</td>
-      <td>{{resource.target_start_date}}</td>
+      <td>{{resource.target_start_date  | date:'yyyy-M-d' }}</td>
       <td>{{resource.estimate_duration}}</td>
       <td>{{resource.language_requirement}}</td>
   </tr>

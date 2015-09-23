@@ -1,4 +1,5 @@
 <?php
+require "phpmail/PHPMailerAutoload.php"
 header('Content-Type: application/json');
 
 function getContentFile($filename)
@@ -25,12 +26,12 @@ foreach($data->resources as $element)
 			strip_tags($element->number_of_resources),
 			strip_tags($element->special_skills_required),
 			strip_tags($element->resource_location),
-			strip_tags($element->target_start_date),
+			strip_tags(date("Y-m-d", strtotime($element->target_start_date))),
 			strip_tags($element->estimate_duration),
 			strip_tags($element->language_requirement)
 
 		);
-		if ($element->resource_location=="OnSite")
+		if ($element->resource_location=="Onsite")
 		{
 			array_push($values,strip_tags($element->travel_acceptable));
 		}
@@ -80,13 +81,13 @@ $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 if (mail($to, $subject, $email_body, $headers))
 {
 	$arr = array('result' => 1);
+	
 	echo json_encode($arr);
 }
 else
 {
 	$arr = array('result' => 0);
+	
 	echo json_encode($arr);
 }
 ?>
-
-

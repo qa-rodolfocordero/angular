@@ -53,14 +53,22 @@ span.line
 	display: inline-block;
 }
 
+td.callout {
+   padding:15px;
+   background-color:#ECF8FF;
+   margin-bottom: 15px;
+}
+
 p.callout {
-	padding:15px;
-	background-color:#ECF8FF;
-	margin-bottom: 15px;
+	
 }
 .callout a {
 	font-weight:bold;
 	color: #2BA6CB;
+}
+.socialcontent
+{
+	padding:15px;
 }
 
 table.social {
@@ -279,128 +287,50 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 				<tr>
 					<td>
 						<h3>Hi!</h3>
-						<p class="lead">You receive a new request from  {{client_name}}</p>
-						<p>This is the information what we received</p>
+						<p class="lead">There is a new  request from:  {{client_name}}</p>
+						<p>Here is the information provided</p>
+						<tr><td class="callout" >
 						<!-- Callout Panel -->
-						<p class="callout">
-							Client Name: {{client_name}} </br>
-							Client Address: {{client_address}} </br>
-							Client City: {{client_city}} </br>
-							Client Country: {{client_country}} </br>
-						</p><!-- /Callout Panel -->					
-											
+						
+							<p>Client Name: {{client_name}} </p>
+							<p>Client Address: {{client_address}} </p>
+							<p>Client City: {{client_city}} </p>
+							<p>Client Country: {{client_country}} </p>
+						</td></tr>	
+						<!-- /Callout Panel -->					
+						<tr><td>			
 						<p class="lead">Engagement Description</p>
 						<p> {{engagement_description}}</p>
-												
+						</td></tr>				
 						<!-- resources  -->
-						</br>
+						<p></p>
 						<table class="social" width="100%">
 							<tr>
 								<h5 class="">Resource {{id}}</h5>
 							</tr>
-								<td>
-									<span class="line"> Core Plataform </span> {{core_plataform}} </br> </br>
-									<span class="line">Resource Type </span>{{resource_type}} </br></br>
-									<span class="line">Number of Resources </span>{{number_of_resources}} </br></br>
+								<td class="socialcontent">
+									<p><span class="line"> Core Plataform </span> {{core_plataform}} </p>
+									<p><span class="line">Resource Type </span>{{resource_type}} </p>
+									<p><span class="line">Number of Resources </span>{{number_of_resources}} </p>
 									
-									<span class="line">Special skill required</span>
+									<p><span class="line">Special Skill Required</span></p>
 									<p>
 										{{special_skill_required}}
 									</p>
 									</br>
-									<span class="line">Resource location </span>{{resource_location}} </br></br>
-									<span class="line">Travel acceptable </span>{{travel_acceptable}} </br></br>
-									<span class="line">Target start date </span>{{target_start_date}} </br></br>
-									<span class="line">Estimated duration </span>{{estimated_duration}} </br></br>
-									<span class="line">Language requirement </span>{{language_requirement}} </br></br>
+									<p><span class="line">Resource Location </span>{{resource_location}} </p>
+									<p><span class="line">Travel Acceptable </span>{{travel_acceptable}} </p>
+									<p><span class="line">Target Start Date </span>{{target_start_date}} </p>
+									<p><span class="line">Estimated Duration </span>{{estimated_duration}} </p>
+									<p><span class="line">Language Requirement </span>{{language_requirement}} </p>
 									
 									
 									
 								</td>
 							</tr>
 						</table>
-						</br>
-						<!-- resources  -->
-						</br>
-						<table class="social" width="100%">
-							<tr>
-								<h5 class="">Resource {{id}}</h5>
-							</tr>
-								<td>
-									<span class="line"> Core Plataform </span> {{core_plataform}} </br> </br>
-									<span class="line">Resource Type </span>{{resource_type}} </br></br>
-									<span class="line">Number of Resources </span>{{number_of_resources}} </br></br>
-									
-									<span class="line">Special skill required</span>
-									<p>
-										{{special_skill_required}}
-									</p>
-									</br>
-									<span class="line">Resource location </span>{{resource_location}} </br></br>
-									<span class="line">Travel acceptable </span>{{travel_acceptable}} </br></br>
-									<span class="line">Target start date </span>{{target_start_date}} </br></br>
-									<span class="line">Estimated duration </span>{{estimated_duration}} </br></br>
-									<span class="line">Language requirement </span>{{language_requirement}} </br></br>
-									
-									
-									
-								</td>
-							</tr>
-						</table>
-						<!-- resources  -->
-						</br>
-						<table class="social" width="100%">
-							<tr>
-								<h5 class="">Resource {{id}}</h5>
-							</tr>
-								<td>
-									<span class="line"> Core Plataform </span> {{core_plataform}} </br> </br>
-									<span class="line">Resource Type </span>{{resource_type}} </br></br>
-									<span class="line">Number of Resources </span>{{number_of_resources}} </br></br>
-									
-									<span class="line">Special skill required</span>
-									<p>
-										{{special_skill_required}}
-									</p>
-									</br>
-									<span class="line">Resource location </span>{{resource_location}} </br></br>
-									<span class="line">Travel acceptable </span>{{travel_acceptable}} </br></br>
-									<span class="line">Target start date </span>{{target_start_date}} </br></br>
-									<span class="line">Estimated duration </span>{{estimated_duration}} </br></br>
-									<span class="line">Language requirement </span>{{language_requirement}} </br></br>
-									
-									
-									
-								</td>
-							</tr>
-						</table>
-						<!-- resources  -->
-						</br>
-						<table class="social" width="100%">
-							<tr>
-								<h5 class="">Resource {{id}}</h5>
-							</tr>
-								<td>
-									<span class="line"> Core Plataform </span> {{core_plataform}} </br> </br>
-									<span class="line">Resource Type </span>{{resource_type}} </br></br>
-									<span class="line">Number of Resources </span>{{number_of_resources}} </br></br>
-									
-									<span class="line">Special skill required</span>
-									<p>
-										{{special_skill_required}}
-									</p>
-									</br>
-									<span class="line">Resource location </span>{{resource_location}} </br></br>
-									<span class="line">Travel acceptable </span>{{travel_acceptable}} </br></br>
-									<span class="line">Target start date </span>{{target_start_date}} </br></br>
-									<span class="line">Estimated duration </span>{{estimated_duration}} </br></br>
-									<span class="line">Language requirement </span>{{language_requirement}} </br></br>
-									
-									
-									
-								</td>
-							</tr>
-						</table>
+						<p></p>
+						
 						<!-- Resources -->
 						
 						
